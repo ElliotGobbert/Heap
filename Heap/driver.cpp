@@ -7,6 +7,9 @@ int main() {
 	for (int i = 11; i > 0; i--) {
 		aHeap.enqueue(i, i * 10);
 	}
+	aHeap.dequeue();
+	aHeap.heapSort();
 	aHeap.dump();
+
 	return 0;
 }

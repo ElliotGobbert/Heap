@@ -23,6 +23,9 @@ public:
 	bool empty();
 	void upHeap(int index);
 	void downHeap(int index);
+	void downHeap(int index, int end);
+	void heapSort();
+	void reHeapify();
 private:
 	Node* m_heap;
 	int m_heapSize;

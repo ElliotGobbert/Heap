@@ -67,3 +67,31 @@ void Heap::downHeap(int index) {
 		downHeap(minChild);
 	}
 }
+void Heap::downHeap(int index, int end) {
+	int minChild = index;
+	int left = index * 2;
+	int right = (index * 2) + 1;
+	if (left < end && m_heap[left].m_key < m_heap[minChild].m_key) {
+		minChild = left;
+	}
+	if (right < end && m_heap[right].m_key < m_heap[minChild].m_key) {
+		minChild = right;
+	}
+	if (index != minChild) {
+		Node temp = m_heap[minChild];
+		m_heap[minChild] = m_heap[index];
+		m_heap[index] = temp;
+		downHeap(minChild, end);
+	}
+}
+void Heap::reHeapify() {
+	for (int i = m_numElements / 2; i >= m_ROOT_INDEX; i--) {
+		downHeap(i);
+	}
+}
+void Heap::heapSort() {
+	for (int i = m_numElements; i > m_ROOT_INDEX; i--) {
+		swap(m_heap[m_ROOT_INDEX], m_heap[i]);
+		downHeap(m_ROOT_INDEX, i);
+	}
+}
